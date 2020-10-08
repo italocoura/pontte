@@ -56,9 +56,6 @@ router.get('/allregisters', async (req, res) => {
 
 });
 
-router.get('/home', homeController.getHome);
-
-
 router.post('/uploadFiles', uploadDocumentsController.uploadFiles);
 
 router.post('/uploadFile', uploadDocumentController.uploadFile);

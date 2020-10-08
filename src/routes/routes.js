@@ -8,7 +8,9 @@ const router = express.Router();
 
 const Authcontroller = require("../controllers/authController")
 
-const uploadController = require("../controllers/upload");
+const uploadDocumentController = require("../controllers/upload");
+
+const uploadDocumentsController = require("../controllers/uploadFiles");
 
 const homeController = require("../controllers/home");
 
@@ -37,30 +39,12 @@ router.post('/register', async (req, res) => {
     res.send({ userRegistered });
 });
 
-//post to register documents
-router.post('/registerDocuments', async (req, res) => {
-    req.body.userId = userRegisteredId;
-    let documentsUploaded = await Authcontroller.registerDocuments(req, res);
-
-    res.send({ documentsUploaded })
-})
-
-
 //put to upload informations
 router.put('/uploadregisters', async (req, res) => {
 
     let updateRegisters = await Authcontroller.updateRegister(req, res);
 
     res.send({ updateRegisters });
-});
-
-
-//put to upload documents
-router.put('/uploaddocuments', async (req, res) => {
-
-    let updateDocuments = await Authcontroller.updateDocuments(req, res);
-
-    res.send({ updateDocuments });
 });
 
 
@@ -75,7 +59,9 @@ router.get('/allregisters', async (req, res) => {
 router.get('/home', homeController.getHome);
 
 
-router.post('/upload', uploadController.uploadFiles);
+router.post('/uploadFiles', uploadDocumentsController.uploadFiles);
+
+router.post('/uploadFile', uploadDocumentController.uploadFile);
 
 
 module.exports = app => app.use('/', router);

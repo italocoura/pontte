@@ -12,6 +12,8 @@ Routes availables:
 
 */uploadregisters* -> used to change registers on the database
 
-*/upload* -> used to upload documents to the database
+*/uploadFile* -> used to upload one document to the database
+
+*/uploadFiles* -> used to upload more de one document to the database
 
 */allregisters* -> used to view all registers on the database
